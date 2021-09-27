@@ -17,18 +17,17 @@ public class Main {
 
             while (reader.hasNextLine()) {
                 String text = reader.nextLine();
-
-                String[] line = text.split("[^a-zA-Z0-9\"'-]");
-                //String line = text.replaceAll("[\\W]", " ");
-                //System.out.println(_text);
-                cutWords(line);
-                words.addAll(Arrays.asList(line));
+                String line = text.replaceAll("[^ a-zA-Z0-9]","");
+                line = line.replaceAll(" {2,}", " ");
+                String[] arr = line.split(" ");
+                cutWords(arr);
+                words.addAll(Arrays.asList(arr));
             }
             reader.close();
 
             /*for(String word : words )
             {
-                System.out.print(word + ' ');
+                System.out.println(word);
             }*/
 
             String result = func(words);
